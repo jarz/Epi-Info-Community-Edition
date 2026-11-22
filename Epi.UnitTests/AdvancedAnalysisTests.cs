@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using Epi.Windows;
@@ -27,6 +28,14 @@ namespace Epi.UnitTests
     [TestClass]
     public class AdvancedAnalysisTests : StatisticsTests
     {
+        private static double ParseRegressionExpected(string value, int row, int column)
+        {
+            double result;
+            Assert.IsTrue(double.TryParse(value, NumberStyles.Float, CultureInfo.InvariantCulture, out result),
+                $"Invalid regression result at row {row + 1}, column {column + 1}.");
+            return result;
+        }
+
         private struct VariableRow
         {
             public string variableName;
@@ -65,7 +74,9 @@ namespace Epi.UnitTests
         {
             int iterations = 100;
 
-            var reader = new StreamReader(File.OpenRead(@"..\..\Data\LinearRegressionResults.csv"));
+            var resultPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "LinearRegressionResults.csv");
+            string[] resultRows = File.ReadAllLines(resultPath);
+            Assert.AreEqual(iterations, resultRows.Length, "Unexpected number of linear regression reference rows.");
             int linesinfile = iterations;
             double[] constants = new double[linesinfile];
             double[] constantlcls = new double[linesinfile];
@@ -102,54 +113,88 @@ namespace Epi.UnitTests
             double[] totdfs = new double[linesinfile];
             double[] totsss = new double[linesinfile];
             double[] rsquares = new double[linesinfile];
-            int i = 0;
-            while (!reader.EndOfStream)
+            for (int i = 0; i < resultRows.Length; i++)
             {
-                var line = reader.ReadLine();
-                var values = line.Split(',');
-                bool rv = Double.TryParse(values[1], out constants[i]);
-                rv = Double.TryParse(values[2], out constantlcls[i]);
-                rv = Double.TryParse(values[3], out constantucls[i]);
-                rv = Double.TryParse(values[4], out constantstes[i]);
-                rv = Double.TryParse(values[5], out i1s[i]);
-                rv = Double.TryParse(values[6], out i1lcls[i]);
-                rv = Double.TryParse(values[7], out i1ucls[i]);
-                rv = Double.TryParse(values[8], out i1stes[i]);
-                rv = Double.TryParse(values[9], out i2s[i]);
-                rv = Double.TryParse(values[10], out i2lcls[i]);
-                rv = Double.TryParse(values[11], out i2ucls[i]);
-                rv = Double.TryParse(values[12], out i2stes[i]);
-                rv = Double.TryParse(values[13], out i3s[i]);
-                rv = Double.TryParse(values[14], out i3lcls[i]);
-                rv = Double.TryParse(values[15], out i3ucls[i]);
-                rv = Double.TryParse(values[16], out i3stes[i]);
-                rv = Double.TryParse(values[17], out fconstants[i]);
-                rv = Double.TryParse(values[18], out pfconstants[i]);
-                rv = Double.TryParse(values[19], out f1s[i]);
-                rv = Double.TryParse(values[20], out pf1s[i]);
-                rv = Double.TryParse(values[21], out f2s[i]);
-                rv = Double.TryParse(values[22], out pf2s[i]);
-                rv = Double.TryParse(values[23], out f3s[i]);
-                rv = Double.TryParse(values[24], out pf3s[i]);
-                rv = Double.TryParse(values[25], out regdfs[i]);
-                rv = Double.TryParse(values[26], out regsss[i]);
-                rv = Double.TryParse(values[27], out regmss[i]);
-                rv = Double.TryParse(values[28], out fstatistics[i]);
-                rv = Double.TryParse(values[29], out pvalues[i]);
-                rv = Double.TryParse(values[30], out resdfs[i]);
-                rv = Double.TryParse(values[31], out ressss[i]);
-                rv = Double.TryParse(values[32], out resmss[i]);
-                rv = Double.TryParse(values[33], out totdfs[i]);
-                rv = Double.TryParse(values[34], out totsss[i]);
-                rv = Double.TryParse(values[35], out rsquares[i]);
-                i++;
-                if (i == linesinfile)
-                    break;
+                var values = resultRows[i].TrimEnd(',').Split(',');
+                Assert.AreEqual(36, values.Length, $"Unexpected column count in linear regression reference row {i + 1}.");
+                Assert.AreEqual(i, int.Parse(values[0], CultureInfo.InvariantCulture), $"Unexpected iteration in linear regression reference row {i + 1}.");
+                constants[i] = ParseRegressionExpected(values[1], i, 1);
+                constantlcls[i] = ParseRegressionExpected(values[2], i, 2);
+                constantucls[i] = ParseRegressionExpected(values[3], i, 3);
+                constantstes[i] = ParseRegressionExpected(values[4], i, 4);
+                i1s[i] = ParseRegressionExpected(values[5], i, 5);
+                i1lcls[i] = ParseRegressionExpected(values[6], i, 6);
+                i1ucls[i] = ParseRegressionExpected(values[7], i, 7);
+                i1stes[i] = ParseRegressionExpected(values[8], i, 8);
+                i2s[i] = ParseRegressionExpected(values[9], i, 9);
+                i2lcls[i] = ParseRegressionExpected(values[10], i, 10);
+                i2ucls[i] = ParseRegressionExpected(values[11], i, 11);
+                i2stes[i] = ParseRegressionExpected(values[12], i, 12);
+                i3s[i] = ParseRegressionExpected(values[13], i, 13);
+                i3lcls[i] = ParseRegressionExpected(values[14], i, 14);
+                i3ucls[i] = ParseRegressionExpected(values[15], i, 15);
+                i3stes[i] = ParseRegressionExpected(values[16], i, 16);
+                fconstants[i] = ParseRegressionExpected(values[17], i, 17);
+                pfconstants[i] = ParseRegressionExpected(values[18], i, 18);
+                f1s[i] = ParseRegressionExpected(values[19], i, 19);
+                pf1s[i] = ParseRegressionExpected(values[20], i, 20);
+                f2s[i] = ParseRegressionExpected(values[21], i, 21);
+                pf2s[i] = ParseRegressionExpected(values[22], i, 22);
+                f3s[i] = ParseRegressionExpected(values[23], i, 23);
+                pf3s[i] = ParseRegressionExpected(values[24], i, 24);
+                regdfs[i] = ParseRegressionExpected(values[25], i, 25);
+                regsss[i] = ParseRegressionExpected(values[26], i, 26);
+                regmss[i] = ParseRegressionExpected(values[27], i, 27);
+                fstatistics[i] = ParseRegressionExpected(values[28], i, 28);
+                pvalues[i] = ParseRegressionExpected(values[29], i, 29);
+                resdfs[i] = ParseRegressionExpected(values[30], i, 30);
+                ressss[i] = ParseRegressionExpected(values[31], i, 31);
+                resmss[i] = ParseRegressionExpected(values[32], i, 32);
+                totdfs[i] = ParseRegressionExpected(values[33], i, 33);
+                totsss[i] = ParseRegressionExpected(values[34], i, 34);
+                rsquares[i] = ParseRegressionExpected(values[35], i, 35);
             }
 
+            var inputPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "LinearRegressionTestData.csv");
+            var inputTablesByIteration = new Dictionary<int, DataTable>();
+            bool isHeader = true;
+            foreach (var line in File.ReadLines(inputPath))
+            {
+                if (isHeader)
+                {
+                    isHeader = false;
+                    continue;
+                }
+
+                var values = line.Split(',');
+                Assert.AreEqual(6, values.Length, "Unexpected column count in LinearRegressionTestData.csv.");
+                int iteration = int.Parse(values[0], CultureInfo.InvariantCulture);
+                DataTable dataTable;
+                if (!inputTablesByIteration.TryGetValue(iteration, out dataTable))
+                {
+                    dataTable = new DataTable("iteration" + iteration);
+                    dataTable.CaseSensitive = true;
+                    dataTable.Columns.Add("depvar", typeof(double));
+                    dataTable.Columns.Add("indepvar1", typeof(double));
+                    dataTable.Columns.Add("indepvar2", typeof(double));
+                    dataTable.Columns.Add("indepvar3", typeof(double));
+                    inputTablesByIteration.Add(iteration, dataTable);
+                }
+
+                DataRow dataRow = dataTable.NewRow();
+                dataRow["depvar"] = double.Parse(values[2], CultureInfo.InvariantCulture);
+                dataRow["indepvar1"] = double.Parse(values[3], CultureInfo.InvariantCulture);
+                dataRow["indepvar2"] = double.Parse(values[4], CultureInfo.InvariantCulture);
+                dataRow["indepvar3"] = double.Parse(values[5], CultureInfo.InvariantCulture);
+                dataTable.Rows.Add(dataRow);
+            }
+
+            Assert.AreEqual(iterations, inputTablesByIteration.Count, "Unexpected number of linear regression input datasets.");
             for (int j = 0; j < iterations; j++)
             {
-                getData("LinearRegressionTestData", "iteration = " + j);
+                DataTable regressionData;
+                Assert.IsTrue(inputTablesByIteration.TryGetValue(j, out regressionData), $"Missing linear regression input for iteration {j}.");
+                Assert.AreEqual(100, regressionData.Rows.Count, $"Unexpected input row count for linear regression iteration {j}.");
 
                 Dictionary<string, string> inputVariableList = new Dictionary<string, string>();
                 inputVariableList.Add("depvar", "dependvar");
@@ -160,12 +205,10 @@ namespace Epi.UnitTests
                 inputVariableList.Add("indepvar2", "unsorted");
                 inputVariableList.Add("indepvar3", "unsorted");
 
-                DataTable regressTable = new DataTable();
-
                 LinearRegression.LinearRegressionResults results = new LinearRegression.LinearRegressionResults();
 
                 StatisticsRepository.LinearRegression linearRegression = new StatisticsRepository.LinearRegression();
-                results = linearRegression.LinearRegression(inputVariableList, mainTable);
+                results = linearRegression.LinearRegression(inputVariableList, regressionData);
 
                 double tScore = 1.9;
                 while (Epi.Statistics.SharedResources.PFromT(tScore, results.residualsDf) > 0.025)
@@ -236,48 +279,83 @@ namespace Epi.UnitTests
         public void LogisticRegressionTest()
         {
             int iterations = 100;
+            var coefficientPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "LogisticCoefficientResults.csv");
+            var oddsRatioPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "LogisticOddsRatioResults.csv");
+            var inputPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "LogisticTestData.csv");
+            string[] coefficientRows = File.ReadAllLines(coefficientPath);
+            string[] oddsRatioRows = File.ReadAllLines(oddsRatioPath);
+            Assert.AreEqual(iterations * 3, coefficientRows.Length, "Unexpected number of logistic coefficient rows.");
+            Assert.AreEqual(iterations * 2, oddsRatioRows.Length, "Unexpected number of logistic odds-ratio rows.");
 
-            var reader = new StreamReader(File.OpenRead(@"..\..\Data\LogisticCoefficientResults.csv"));
-            int linesinfile = 3 * iterations;
-            double[] coefficients = new double[linesinfile];
-            double[] stderrs = new double[linesinfile];
-            double[] chisqs = new double[linesinfile];
-            double[] ps = new double[linesinfile];
-            int i = 0;
-            while (!reader.EndOfStream)
+            double[] coefficients = new double[coefficientRows.Length];
+            double[] stderrs = new double[coefficientRows.Length];
+            double[] chisqs = new double[coefficientRows.Length];
+            double[] ps = new double[coefficientRows.Length];
+            string[] coefficientNames = { "Intercept", "indepvar1", "indepvar2" };
+            for (int i = 0; i < coefficientRows.Length; i++)
             {
-                var line = reader.ReadLine();
-                var values = line.Split(',');
-                bool rv = Double.TryParse(values[2], out coefficients[i]);
-                rv = Double.TryParse(values[3], out stderrs[i]);
-                rv = Double.TryParse(values[4], out chisqs[i]);
-                rv = Double.TryParse(values[5], out ps[i]);
-                i++;
-                if (i == linesinfile)
-                    break;
+                var values = coefficientRows[i].Split(',');
+                Assert.AreEqual(6, values.Length, $"Unexpected column count in logistic coefficient row {i + 1}.");
+                Assert.AreEqual(i / 3, int.Parse(values[0], CultureInfo.InvariantCulture), $"Unexpected iteration in logistic coefficient row {i + 1}.");
+                Assert.AreEqual(coefficientNames[i % 3], values[1].Trim('"'), $"Unexpected variable in logistic coefficient row {i + 1}.");
+                coefficients[i] = ParseRegressionExpected(values[2], i, 2);
+                stderrs[i] = ParseRegressionExpected(values[3], i, 3);
+                chisqs[i] = ParseRegressionExpected(values[4], i, 4);
+                ps[i] = ParseRegressionExpected(values[5], i, 5);
             }
 
-            reader = new StreamReader(File.OpenRead(@"..\..\Data\LogisticOddsRatioResults.csv"));
-            linesinfile = 2 * iterations;
-            double[] oddsratios = new double[linesinfile];
-            double[] lowercls = new double[linesinfile];
-            double[] uppercls = new double[linesinfile];
-            i = 0;
-            while (!reader.EndOfStream)
+            double[] oddsratios = new double[oddsRatioRows.Length];
+            double[] lowercls = new double[oddsRatioRows.Length];
+            double[] uppercls = new double[oddsRatioRows.Length];
+            string[] oddsRatioNames = { "indepvar1 1 vs 0", "indepvar2" };
+            for (int i = 0; i < oddsRatioRows.Length; i++)
             {
-                var line = reader.ReadLine();
-                var values = line.Split(',');
-                bool rv = Double.TryParse(values[2], out oddsratios[i]);
-                rv = Double.TryParse(values[3], out lowercls[i]);
-                rv = Double.TryParse(values[4], out uppercls[i]);
-                i++;
-                if (i == linesinfile)
-                    break;
+                var values = oddsRatioRows[i].Split(',');
+                Assert.AreEqual(5, values.Length, $"Unexpected column count in logistic odds-ratio row {i + 1}.");
+                Assert.AreEqual(i / 2, int.Parse(values[0], CultureInfo.InvariantCulture), $"Unexpected iteration in logistic odds-ratio row {i + 1}.");
+                Assert.AreEqual(oddsRatioNames[i % 2], values[1].Trim('"'), $"Unexpected variable in logistic odds-ratio row {i + 1}.");
+                oddsratios[i] = ParseRegressionExpected(values[2], i, 2);
+                lowercls[i] = ParseRegressionExpected(values[3], i, 3);
+                uppercls[i] = ParseRegressionExpected(values[4], i, 4);
             }
 
+            var inputTablesByIteration = new Dictionary<int, DataTable>();
+            bool isHeader = true;
+            foreach (var line in File.ReadLines(inputPath))
+            {
+                if (isHeader)
+                {
+                    isHeader = false;
+                    continue;
+                }
+
+                var values = line.Split(',');
+                Assert.AreEqual(5, values.Length, "Unexpected column count in LogisticTestData.csv.");
+                int iteration = int.Parse(values[0], CultureInfo.InvariantCulture);
+                DataTable dataTable;
+                if (!inputTablesByIteration.TryGetValue(iteration, out dataTable))
+                {
+                    dataTable = new DataTable("iteration" + iteration);
+                    dataTable.CaseSensitive = true;
+                    dataTable.Columns.Add("depvar", typeof(double));
+                    dataTable.Columns.Add("indepvar1", typeof(double));
+                    dataTable.Columns.Add("indepvar2", typeof(double));
+                    inputTablesByIteration.Add(iteration, dataTable);
+                }
+
+                DataRow dataRow = dataTable.NewRow();
+                dataRow["depvar"] = double.Parse(values[2], CultureInfo.InvariantCulture);
+                dataRow["indepvar1"] = double.Parse(values[3], CultureInfo.InvariantCulture);
+                dataRow["indepvar2"] = double.Parse(values[4], CultureInfo.InvariantCulture);
+                dataTable.Rows.Add(dataRow);
+            }
+
+            Assert.AreEqual(iterations, inputTablesByIteration.Count, "Unexpected number of logistic input datasets.");
             for (int j = 0; j < iterations; j++)
             {
-                getData("LogisticTestData", "iteration = " + j);
+                DataTable regressionData;
+                Assert.IsTrue(inputTablesByIteration.TryGetValue(j, out regressionData), $"Missing logistic input for iteration {j}.");
+                Assert.AreEqual(100, regressionData.Rows.Count, $"Unexpected input row count for logistic iteration {j}.");
 
                 Dictionary<string, string> inputVariableList = new Dictionary<string, string>();
                 inputVariableList.Add("depvar", "dependvar");
@@ -287,29 +365,15 @@ namespace Epi.UnitTests
                 inputVariableList.Add("indepvar1", "unsorted");
                 inputVariableList.Add("indepvar2", "unsorted");
 
-                DataTable regressTable = new DataTable();
-
                 RegressionResults results = new RegressionResults();
 
                 StatisticsRepository.LogisticRegression logisticRegression = new StatisticsRepository.LogisticRegression();
-                results.regressionResults = logisticRegression.LogisticRegression(inputVariableList, mainTable);
-                if (false)
-                {
-                    System.Diagnostics.Trace.Write(results.regressionResults.variables[0].oddsRatio + "\t" +
-                        results.regressionResults.variables[0].ninetyFivePercent + "\t" +
-                        results.regressionResults.variables[0].ci + "\t" +
-                        results.regressionResults.variables[0].coefficient + "\t" +
-                        results.regressionResults.variables[0].se + "\t" +
-                        results.regressionResults.variables[0].Z + "\t" +
-                        results.regressionResults.variables[0].P + "\n");
-                    System.Diagnostics.Trace.Write(results.regressionResults.variables[1].oddsRatio + "\t" +
-                        results.regressionResults.variables[1].ninetyFivePercent + "\t" +
-                        results.regressionResults.variables[1].ci + "\t" +
-                        results.regressionResults.variables[1].coefficient + "\t" +
-                        results.regressionResults.variables[1].se + "\t" +
-                        results.regressionResults.variables[1].Z + "\t" +
-                        results.regressionResults.variables[1].P + "\n");
-                }
+                results.regressionResults = logisticRegression.LogisticRegression(inputVariableList, regressionData);
+                Assert.IsTrue(string.IsNullOrEmpty(results.regressionResults.errorMessage), $"Logistic regression failed for iteration {j}: {results.regressionResults.errorMessage}");
+                Assert.AreEqual(3, results.regressionResults.variables.Count, $"Unexpected result-variable count for logistic iteration {j}.");
+                Assert.AreEqual(coefficients[j * 3], results.regressionResults.variables[2].coefficient, 0.01);
+                Assert.AreEqual(stderrs[j * 3], results.regressionResults.variables[2].se, 0.01);
+                Assert.AreEqual(ps[j * 3], results.regressionResults.variables[2].P, 0.01);
                 Assert.AreEqual(results.regressionResults.variables[0].oddsRatio, oddsratios[j * 2], 0.01);
                 Assert.AreEqual(results.regressionResults.variables[0].ninetyFivePercent, lowercls[j * 2], 0.01);
                 Assert.AreEqual(results.regressionResults.variables[0].ci, uppercls[j * 2], 0.01);

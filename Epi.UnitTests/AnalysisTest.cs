@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using Epi.Windows;
@@ -424,77 +425,70 @@ namespace Epi.UnitTests
         [TestMethod]
         public void TwoByTwoTest()
         {
-            int iterations = 100;
             StatisticsRepository.cTable cTable = new StatisticsRepository.cTable();
+            var inputPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "LogisticTestData.csv");
+            var expectedPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "TwoBy2Stats.csv");
+            var cellCountsByIteration = new Dictionary<int, int[]>();
+            bool isHeader = true;
 
-            var reader = new StreamReader(File.OpenRead(@"..\..\Data\TwoBy2Stats.csv"));
-            int linesinfile = iterations;
-            double[] chisqs = new double[linesinfile];
-            double[] chisqps = new double[linesinfile];
-            double[] mhchisqs = new double[linesinfile];
-            double[] mhchisqps = new double[linesinfile];
-            double[] yateschisqs = new double[linesinfile];
-            double[] yateschisqps = new double[linesinfile];
-            double[] ors = new double[linesinfile];
-            double[] orlowers = new double[linesinfile];
-            double[] oruppers = new double[linesinfile];
-            double[] rrs = new double[linesinfile];
-            double[] rrlowers = new double[linesinfile];
-            double[] rruppers = new double[linesinfile];
-            double[] fisherlowers = new double[linesinfile];
-            double[] fisheruppers = new double[linesinfile];
-            double[] fisher1s = new double[linesinfile];
-            double[] fisher2s = new double[linesinfile];
-            int i = 0;
-            while (!reader.EndOfStream)
+            foreach (var line in File.ReadLines(inputPath))
             {
-                var line = reader.ReadLine();
+                if (isHeader)
+                {
+                    isHeader = false;
+                    continue;
+                }
+
                 var values = line.Split(',');
-                bool rv = Double.TryParse(values[1], out chisqs[i]);
-                rv = Double.TryParse(values[2], out chisqps[i]);
-                rv = Double.TryParse(values[3], out mhchisqs[i]);
-                rv = Double.TryParse(values[4], out mhchisqps[i]);
-                rv = Double.TryParse(values[5], out yateschisqs[i]);
-                rv = Double.TryParse(values[6], out yateschisqps[i]);
-                rv = Double.TryParse(values[7], out ors[i]);
-                rv = Double.TryParse(values[8], out orlowers[i]);
-                rv = Double.TryParse(values[9], out oruppers[i]);
-                rv = Double.TryParse(values[10], out rrs[i]);
-                rv = Double.TryParse(values[11], out rrlowers[i]);
-                rv = Double.TryParse(values[12], out rruppers[i]);
-                rv = Double.TryParse(values[13], out fisherlowers[i]);
-                rv = Double.TryParse(values[14], out fisheruppers[i]);
-                rv = Double.TryParse(values[15], out fisher1s[i]);
-                rv = Double.TryParse(values[16], out fisher2s[i]);
-                i++;
-                if (i == linesinfile)
-                    break;
+                Assert.AreEqual(5, values.Length, "Unexpected column count in LogisticTestData.csv.");
+                int iteration = int.Parse(values[0], CultureInfo.InvariantCulture);
+                int depvar = int.Parse(values[2], CultureInfo.InvariantCulture);
+                int indepvar = int.Parse(values[3], CultureInfo.InvariantCulture);
+                Assert.IsTrue(depvar == 0 || depvar == 1, $"Unexpected outcome in input iteration {iteration}.");
+                Assert.IsTrue(indepvar == 0 || indepvar == 1, $"Unexpected exposure in input iteration {iteration}.");
+
+                int[] cellCounts;
+                if (!cellCountsByIteration.TryGetValue(iteration, out cellCounts))
+                {
+                    cellCounts = new int[4];
+                    cellCountsByIteration.Add(iteration, cellCounts);
+                }
+
+                int cell = depvar == 1 ? (indepvar == 1 ? 0 : 1) : (indepvar == 1 ? 2 : 3);
+                cellCounts[cell]++;
             }
 
-            for (int j = 0; j < iterations; j++)
+            var expectedRows = File.ReadAllLines(expectedPath);
+            Assert.AreEqual(100, expectedRows.Length, "Unexpected number of 2x2 reference rows.");
+            Assert.AreEqual(expectedRows.Length, cellCountsByIteration.Count, "Input and expected fixtures have different iteration counts.");
+
+            for (int j = 0; j < expectedRows.Length; j++)
             {
-                getData("LogisticTestData", "iteration = " + j);
-                int yy = mainTable.Select("depvar = 1 and indepvar1 = 1").Length;
-                int yn = mainTable.Select("depvar = 1 and indepvar1 = 0").Length;
-                int ny = mainTable.Select("depvar = 0 and indepvar1 = 1").Length;
-                int nn= mainTable.Select("depvar = 0 and indepvar1 = 0").Length;
-                StatisticsRepository.cTable.SingleTableResults singleTableResults = cTable.SigTable((double)yy, (double)yn, (double)ny, (double)nn, 0.95);
-                Assert.AreEqual(singleTableResults.ChiSquareUncorrectedVal, chisqs[j], 0.0001);
-                Assert.AreEqual(singleTableResults.ChiSquareUncorrected2P, chisqps[j], 0.0001);
-                Assert.AreEqual(singleTableResults.ChiSquareMantelVal, mhchisqs[j], 0.0001);
-                Assert.AreEqual(singleTableResults.ChiSquareMantel2P, mhchisqps[j], 0.0001);
-                Assert.AreEqual(singleTableResults.ChiSquareYatesVal, yateschisqs[j], 0.0001);
-                Assert.AreEqual(singleTableResults.ChiSquareYates2P, yateschisqps[j], 0.0001);
-                Assert.AreEqual(singleTableResults.OddsRatioEstimate.Value, ors[j], 0.0001);
-                Assert.AreEqual(singleTableResults.OddsRatioLower.Value, orlowers[j], 0.0001);
-                Assert.AreEqual(singleTableResults.OddsRatioUpper.Value, oruppers[j], 0.001);
-                Assert.AreEqual(singleTableResults.RiskRatioEstimate.Value, rrs[j], 0.0001);
-                Assert.AreEqual(singleTableResults.RiskRatioLower.Value, rrlowers[j], 0.0001);
-                Assert.AreEqual(singleTableResults.RiskRatioUpper.Value, rruppers[j], 0.0001);
-                Assert.AreEqual(singleTableResults.OddsRatioMLEFisherLower, fisherlowers[j], 0.0001);
-                Assert.AreEqual(singleTableResults.OddsRatioMLEFisherUpper, fisheruppers[j], 0.0001);
-                Assert.AreEqual(singleTableResults.FisherExactP, fisher1s[j], 0.0001);
-                Assert.AreEqual(singleTableResults.FisherExact2P, fisher2s[j], 0.0001);
+                var values = expectedRows[j].TrimEnd(',').Split(',');
+                Assert.AreEqual(17, values.Length, $"Unexpected column count in 2x2 reference row {j + 1}.");
+                int iteration = int.Parse(values[0], CultureInfo.InvariantCulture);
+                Assert.AreEqual(j, iteration, $"Unexpected iteration in 2x2 reference row {j + 1}.");
+
+                int[] cellCounts;
+                Assert.IsTrue(cellCountsByIteration.TryGetValue(iteration, out cellCounts), $"Missing input for 2x2 iteration {iteration}.");
+                var singleTableResults = cTable.SigTable(cellCounts[0], cellCounts[1], cellCounts[2], cellCounts[3], 0.95);
+                string context = $"2x2 fixture iteration {iteration}.";
+                Assert.AreEqual(double.Parse(values[1], CultureInfo.InvariantCulture), singleTableResults.ChiSquareUncorrectedVal, 0.0001, context + " Uncorrected chi-square.");
+                Assert.AreEqual(double.Parse(values[2], CultureInfo.InvariantCulture), singleTableResults.ChiSquareUncorrected2P, 0.0001, context + " Uncorrected chi-square p-value.");
+                Assert.AreEqual(double.Parse(values[3], CultureInfo.InvariantCulture), singleTableResults.ChiSquareMantelVal, 0.0001, context + " Mantel chi-square.");
+                Assert.AreEqual(double.Parse(values[4], CultureInfo.InvariantCulture), singleTableResults.ChiSquareMantel2P, 0.0001, context + " Mantel chi-square p-value.");
+                Assert.AreEqual(double.Parse(values[5], CultureInfo.InvariantCulture), singleTableResults.ChiSquareYatesVal, 0.0001, context + " Yates chi-square.");
+                Assert.AreEqual(double.Parse(values[6], CultureInfo.InvariantCulture), singleTableResults.ChiSquareYates2P, 0.0001, context + " Yates chi-square p-value.");
+                Assert.AreEqual(double.Parse(values[7], CultureInfo.InvariantCulture), singleTableResults.OddsRatioEstimate.Value, 0.0001, context + " Odds ratio.");
+                Assert.AreEqual(double.Parse(values[8], CultureInfo.InvariantCulture), singleTableResults.OddsRatioLower.Value, 0.0001, context + " Odds-ratio lower limit.");
+                Assert.AreEqual(double.Parse(values[9], CultureInfo.InvariantCulture), singleTableResults.OddsRatioUpper.Value, 0.001, context + " Odds-ratio upper limit.");
+                Assert.AreEqual(double.Parse(values[10], CultureInfo.InvariantCulture), singleTableResults.RiskRatioEstimate.Value, 0.0001, context + " Risk ratio.");
+                Assert.AreEqual(double.Parse(values[11], CultureInfo.InvariantCulture), singleTableResults.RiskRatioLower.Value, 0.0001, context + " Risk-ratio lower limit.");
+                Assert.AreEqual(double.Parse(values[12], CultureInfo.InvariantCulture), singleTableResults.RiskRatioUpper.Value, 0.0001, context + " Risk-ratio upper limit.");
+                Assert.AreEqual(double.Parse(values[13], CultureInfo.InvariantCulture), singleTableResults.OddsRatioMLEFisherLower, 0.0001, context + " Fisher odds-ratio lower limit.");
+                Assert.AreEqual(double.Parse(values[14], CultureInfo.InvariantCulture), singleTableResults.OddsRatioMLEFisherUpper, 0.0001, context + " Fisher odds-ratio upper limit.");
+                Assert.AreEqual(double.Parse(values[15], CultureInfo.InvariantCulture), singleTableResults.FisherExactP, 0.0001, context + " One-sided Fisher exact p-value.");
+                Assert.AreEqual(double.Parse(values[16], CultureInfo.InvariantCulture), singleTableResults.FisherExact2P, 0.0001, context + " Two-sided Fisher exact p-value.");
             }
         }
     }
