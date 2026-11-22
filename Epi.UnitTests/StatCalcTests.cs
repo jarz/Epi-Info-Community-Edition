@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using Epi.Windows;
@@ -14,68 +15,50 @@ namespace Epi.UnitTests
         [TestMethod]
         public void BinomialTest()
         {
-            double ltp = 0;
-            double lep = 0;
-            double eqp = 0;
-            double gep = 0;
-            double gtp = 0;
-            double ptt = 0;
-            int lcl = 0;
-            int ucl = 0;
+            var fixturePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "BinomialTests.csv");
+            var calculator = new StatisticsRepository.Strat2x2();
+            int row = 0;
 
-            var reader = new StreamReader(File.OpenRead(@"..\..\Data\BinomialTests.csv"));
-            int linesinfile = 5000;
-            int[] ms = new int[linesinfile];
-            int[] ns = new int[linesinfile];
-            double[] ps = new double[linesinfile];
-            double[] ltps = new double[linesinfile];
-            double[] leps = new double[linesinfile];
-            double[] eqps = new double[linesinfile];
-            double[] geps = new double[linesinfile];
-            double[] gtps = new double[linesinfile];
-            double[] ptts = new double[linesinfile];
-            int[] lcls = new int[linesinfile];
-            int[] ucls = new int[linesinfile];
-            int i = 0;
-            while (!reader.EndOfStream)
+            foreach (var line in File.ReadLines(fixturePath))
             {
-                var line = reader.ReadLine();
-                var values = line.Split(',');
-                bool rv = int.TryParse(values[0], out ms[i]);
-                rv = int.TryParse(values[1], out ns[i]);
-                rv = Double.TryParse(values[2], out ps[i]);
-                rv = Double.TryParse(values[3], out ltps[i]);
-                rv = Double.TryParse(values[4], out leps[i]);
-                rv = Double.TryParse(values[5], out eqps[i]);
-                rv = Double.TryParse(values[6], out geps[i]);
-                rv = Double.TryParse(values[7], out gtps[i]);
-                rv = Double.TryParse(values[8], out ptts[i]);
-                rv = int.TryParse(values[9], out lcls[i]);
-                rv = int.TryParse(values[10], out ucls[i]);
-                i++;
-                if (i == linesinfile)
-                    break;
+                var values = line.TrimEnd(',').Split(',');
+                Assert.AreEqual(11, values.Length, $"Unexpected column count in binomial fixture row {row + 1}.");
+
+                int x = int.Parse(values[0], CultureInfo.InvariantCulture);
+                int n = int.Parse(values[1], CultureInfo.InvariantCulture);
+                double p = double.Parse(values[2], CultureInfo.InvariantCulture);
+                double expectedLtp = double.Parse(values[3], CultureInfo.InvariantCulture);
+                double expectedLep = double.Parse(values[4], CultureInfo.InvariantCulture);
+                double expectedEqp = double.Parse(values[5], CultureInfo.InvariantCulture);
+                double expectedGep = double.Parse(values[6], CultureInfo.InvariantCulture);
+                double expectedGtp = double.Parse(values[7], CultureInfo.InvariantCulture);
+                double expectedPtt = double.Parse(values[8], CultureInfo.InvariantCulture);
+                int expectedLcl = int.Parse(values[9], CultureInfo.InvariantCulture);
+                int expectedUcl = int.Parse(values[10], CultureInfo.InvariantCulture);
+
+                double ltp = 0;
+                double lep = 0;
+                double eqp = 0;
+                double gep = 0;
+                double gtp = 0;
+                double ptt = 0;
+                int lcl = 0;
+                int ucl = 0;
+                calculator.binpdf(n, x, p, ref ltp, ref lep, ref eqp, ref gep, ref gtp, ref ptt, ref lcl, ref ucl);
+
+                string context = $"Binomial fixture row {row + 1}.";
+                Assert.AreEqual(expectedLtp, ltp, 0.000001, context + " Lower-tail probability.");
+                Assert.AreEqual(expectedLep, lep, 0.000001, context + " Lower inclusive probability.");
+                Assert.AreEqual(expectedEqp, eqp, 0.000001, context + " Exact probability.");
+                Assert.AreEqual(expectedGep, gep, 0.000001, context + " Upper inclusive probability.");
+                Assert.AreEqual(expectedGtp, gtp, 0.000001, context + " Upper-tail probability.");
+                Assert.AreEqual(expectedPtt, ptt, 0.000001, context + " Two-tailed probability.");
+                Assert.AreEqual(expectedLcl, lcl, context + " Lower confidence limit.");
+                Assert.IsTrue(Math.Abs(expectedUcl - ucl) <= 1, context + " Upper confidence limit.");
+                row++;
             }
 
-            float divisor = 1000f;
-            System.Diagnostics.Trace.Write("j\t m\t n\t   p\tl\tu\n");
-            for (int j = 0; j < i; j++)
-            {
-                if (Math.Round((double)j / divisor) != (double)j / divisor)
-                    continue;
-                StatisticsRepository.Strat2x2 calculator = new StatisticsRepository.Strat2x2();
-                calculator.binpdf(ns[j], ms[j], ps[j], ref ltp, ref lep, ref eqp, ref gep, ref gtp, ref ptt, ref lcl, ref ucl);
-
-                System.Diagnostics.Trace.Write(j + "\t" + ms[j] + "\t" + ns[j] + "\t" + ps[j] + "\t" + (lcls[j] - lcl) + "\t" + (ucls[j] - ucl) + "\n");
-
-                Assert.AreEqual(lep, leps[j], 0.000001);
-                Assert.AreEqual(eqp, eqps[j], 0.000001);
-                Assert.AreEqual(gep, geps[j], 0.000001);
-                Assert.AreEqual(gtp, gtps[j], 0.000001);
-                Assert.AreEqual(ptt, ptts[j], 0.000001);
-                Assert.AreEqual(lcl, lcls[j], 0.000001);
-                Assert.AreEqual(ucl, ucls[j], 1);
-            }
+            Assert.AreEqual(5000, row, "Unexpected number of binomial fixture rows.");
         }
     }
 }

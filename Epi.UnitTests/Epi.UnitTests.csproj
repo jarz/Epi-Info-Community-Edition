@@ -8,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Epi.UnitTests</RootNamespace>
     <AssemblyName>Epi.UnitTests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -34,46 +34,57 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Epi.Core">
-      <HintPath>..\build\debug\Epi.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Epi.Data.Office">
-      <HintPath>..\build\debug\Epi.Data.Office.dll</HintPath>
-    </Reference>
-    <Reference Include="Epi.Statistics, Version=7.1.5694.15753, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\build\debug\Epi.Statistics.dll</HintPath>
-    </Reference>
-    <Reference Include="Epi.Windows">
-      <HintPath>..\build\debug\Epi.Windows.dll</HintPath>
-    </Reference>
-    <Reference Include="EpiDashboard">
-      <HintPath>..\build\debug\EpiDashboard.dll</HintPath>
-    </Reference>
-    <Reference Include="EpiInfo.Plugin, Version=7.1.6.6, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\build\debug\EpiInfo.Plugin.dll</HintPath>
-    </Reference>
-    <Reference Include="StatisticsRepository">
-      <HintPath>..\build\debug\StatisticsRepository.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.XML" />
   </ItemGroup>
-  <Choose>
-    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-      </ItemGroup>
-    </When>
-    <Otherwise>
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
-      </ItemGroup>
-    </Otherwise>
-  </Choose>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MSTest.TestFramework.2.2.10\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MSTest.TestFramework.2.2.10\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Epi.Core\Epi.Core.csproj">
+      <Project>{EBD2B961-A952-4670-96CA-50BAA12C7F29}</Project>
+      <Name>Epi.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Epi.Data.Office\Epi.Data.Office.csproj">
+      <Project>{80BCBF83-6ED7-414E-97AB-F8E2972C8600}</Project>
+      <Name>Epi.Data.Office</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Epi.Statistics\Epi.Statistics.csproj">
+      <Project>{86B1B837-AE10-4833-97E5-DAEC7748F852}</Project>
+      <Name>Epi.Statistics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Epi.Windows\Epi.Windows.csproj">
+      <Project>{D120296B-493B-46AC-8657-4D32A9604231}</Project>
+      <Name>Epi.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EpiDashboard\EpiDashboard.csproj">
+      <Project>{3DE9D74E-BF08-4101-AC21-96D250A177D4}</Project>
+      <Name>EpiDashboard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EpiInfoPlugin\EpiInfo.Plugin.csproj">
+      <Project>{20C12C97-52CE-45C3-B563-3C15330C2A98}</Project>
+      <Name>EpiInfo.Plugin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StatisticsRepository\StatisticsRepository.vbproj">
+      <Project>{05E53353-68CB-4E89-B477-169E070EAE5D}</Project>
+      <Name>StatisticsRepository</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="AdvancedAnalysisTests.cs" />
     <Compile Include="AnalysisTest.cs" />
@@ -83,16 +94,33 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="Data\BinomialTests.csv" />
-    <None Include="Data\LinearRegressionResults.csv" />
-    <None Include="Data\LinearRegressionTestData.csv" />
-    <None Include="Data\LogisticCoefficientResults.csv" />
-    <None Include="Data\LogisticOddsRatioResults.csv" />
-    <None Include="Data\LogisticTestData.csv" />
+    <None Include="Data\BinomialTests.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\LogisticTestData.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\TwoBy2Stats.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\LinearRegressionResults.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\LinearRegressionTestData.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\LogisticCoefficientResults.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\LogisticOddsRatioResults.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Data\MatchedLogisticTestData.csv" />
     <None Include="Data\MeansFourValueResults.csv" />
     <None Include="Data\MeansTwoValueResults.csv" />
-    <None Include="Data\TwoBy2Stats.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
