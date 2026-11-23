@@ -43,8 +43,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CalithaLib">
+      <HintPath>..\Epi.Core\CalithaLib.dll</HintPath>
+    </Reference>
+    <Reference Include="GoldParserEngine">
+      <HintPath>..\Epi.Core\GoldParserEngine.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Device" />
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
@@ -59,6 +67,10 @@
     <ProjectReference Include="..\Epi.Core\Epi.Core.csproj">
       <Project>{EBD2B961-A952-4670-96CA-50BAA12C7F29}</Project>
       <Name>Epi.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Epi.Core.EnterInterpreter\Epi.Core.EnterInterpreter.csproj">
+      <Project>{E0BCCCB4-5DB8-4AE3-AFF1-F5BB3D6F2FEC}</Project>
+      <Name>Epi.Core.EnterInterpreter</Name>
     </ProjectReference>
     <ProjectReference Include="..\Epi.Data.Office\Epi.Data.Office.csproj">
       <Project>{80BCBF83-6ED7-414E-97AB-F8E2972C8600}</Project>
@@ -88,6 +100,10 @@
   <ItemGroup>
     <Compile Include="AdvancedAnalysisTests.cs" />
     <Compile Include="AnalysisTest.cs" />
+    <Compile Include="CheckCode\CheckCodeExecutionTests.cs" />
+    <Compile Include="CheckCode\CheckCodeGrammarTests.cs" />
+    <Compile Include="CheckCode\CheckCodeTestSupport.cs" />
+    <Compile Include="FormMetadata\FormMetadataTests.cs" />
     <Compile Include="StatCalcTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatisticsTests.cs" />
