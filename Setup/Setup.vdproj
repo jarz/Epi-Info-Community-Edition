@@ -405,6 +405,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_2A6D0F5C1E4B4C7F9B3A8D2E6F104C51"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2B3B6E4040774E6DA4E0B1AE3A8D8234"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -539,18 +545,6 @@
         {
         "MsmKey" = "8:_36FD404A326A27DA9A1C4278DCE563F5"
         "OwnerKey" = "8:_F0C48A96B3424F95931FF3B776ADCFC0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_36FD404A326A27DA9A1C4278DCE563F5"
-        "OwnerKey" = "8:_C16EE1EE3F654FD8A60982B2F862304D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_36FD404A326A27DA9A1C4278DCE563F5"
-        "OwnerKey" = "8:_93BE30CFD2A0553B60A6CD7F4B48F893"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -874,18 +868,18 @@
         "Entry"
         {
         "MsmKey" = "8:_4AEFD2DEF908C97AD6D323AAC466922E"
-        "OwnerKey" = "8:_CCA7FD5E324EA7A620A2D44C20B26E7C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_4AEFD2DEF908C97AD6D323AAC466922E"
         "OwnerKey" = "8:_0173AD7DDB8E980C885D121EBEB9A33E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_4B0B0B15953D43AB8BDB70D8CB413C28"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4B8E2C7A9D1F4E30A5C6B7D8E9F01A23"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1107,6 +1101,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_5C9F3D8B0E2A4F41B6D7C8E9F0A12B34"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_5D35726C17474758B15657FBA421C474"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1156,12 +1156,6 @@
         "Entry"
         {
         "MsmKey" = "8:_65D95A26BF7C4C90B5863B3F1070111B"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6606331B309A43FEA28A4BD37C7F4875"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1234,6 +1228,12 @@
         "Entry"
         {
         "MsmKey" = "8:_6D97434547D441F19D7BF3804112D9C4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6DA04E9C1F3B4052C7E8D9F0A1B23C45"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1395,6 +1395,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_7EB15FAD204C4163D8F9E0A1B2C34D56"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_7FD13B58292B48AE829A6B656F423321"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1462,13 +1468,13 @@
         "Entry"
         {
         "MsmKey" = "8:_84ACA80BB4EB2EBAB338B157EA5D5699"
-        "OwnerKey" = "8:_93BE30CFD2A0553B60A6CD7F4B48F893"
+        "OwnerKey" = "8:_3811B4FD6C924B1BB4F4280000598EB0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_84ACA80BB4EB2EBAB338B157EA5D5699"
-        "OwnerKey" = "8:_C16EE1EE3F654FD8A60982B2F862304D"
+        "OwnerKey" = "8:_F86BD3A9646872AB6C1015300D94217A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1613,24 +1619,6 @@
         {
         "MsmKey" = "8:_9393E0DFB1938CB5E723D085EFBAE2DB"
         "OwnerKey" = "8:_E0F50B9F3D9108B3BB70DA71C3DC35A0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_93BE30CFD2A0553B60A6CD7F4B48F893"
-        "OwnerKey" = "8:_3811B4FD6C924B1BB4F4280000598EB0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_93BE30CFD2A0553B60A6CD7F4B48F893"
-        "OwnerKey" = "8:_F86BD3A9646872AB6C1015300D94217A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_93BE30CFD2A0553B60A6CD7F4B48F893"
-        "OwnerKey" = "8:_F0C48A96B3424F95931FF3B776ADCFC0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2289,12 +2277,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_C16EE1EE3F654FD8A60982B2F862304D"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_C1CC6225FCF249F3BDE66780035C8BB3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2355,30 +2337,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_C89555E2868856DA2D6FEFE8610487E3"
-        "OwnerKey" = "8:_93BE30CFD2A0553B60A6CD7F4B48F893"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C89555E2868856DA2D6FEFE8610487E3"
-        "OwnerKey" = "8:_3811B4FD6C924B1BB4F4280000598EB0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C89555E2868856DA2D6FEFE8610487E3"
-        "OwnerKey" = "8:_F86BD3A9646872AB6C1015300D94217A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C89555E2868856DA2D6FEFE8610487E3"
-        "OwnerKey" = "8:_C16EE1EE3F654FD8A60982B2F862304D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_C8E1C01C305B4ECFB25F043DC63FFCAB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2423,18 +2381,6 @@
         {
         "MsmKey" = "8:_CC9AF94F6EC54A7DA111973213476136"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_CCA7FD5E324EA7A620A2D44C20B26E7C"
-        "OwnerKey" = "8:_93BE30CFD2A0553B60A6CD7F4B48F893"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_CCA7FD5E324EA7A620A2D44C20B26E7C"
-        "OwnerKey" = "8:_C16EE1EE3F654FD8A60982B2F862304D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -3226,36 +3172,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_93BE30CFD2A0553B60A6CD7F4B48F893"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C16EE1EE3F654FD8A60982B2F862304D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C16EE1EE3F654FD8A60982B2F862304D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_93BE30CFD2A0553B60A6CD7F4B48F893"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_93BE30CFD2A0553B60A6CD7F4B48F893"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_0173AD7DDB8E980C885D121EBEB9A33E"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -3539,12 +3455,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_C300C467555F4177B1D7705712FF2987"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C16EE1EE3F654FD8A60982B2F862304D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -3977,18 +3887,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_84ACA80BB4EB2EBAB338B157EA5D5699"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C89555E2868856DA2D6FEFE8610487E3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CCA7FD5E324EA7A620A2D44C20B26E7C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -5256,7 +5154,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MongoDB.Bson, Version=2.19.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:MongoDB.Bson, Version=3.14.1.0, Culture=neutral, PublicKeyToken=94992a530f44e321, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_1906986B61AA487E85BABDE3A71272CE"
@@ -5784,6 +5682,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2A6D0F5C1E4B4C7F9B3A8D2E6F104C51"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:SharpCompress, Version=0.48.1.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_2A6D0F5C1E4B4C7F9B3A8D2E6F104C51"
+                    {
+                    "Name" = "8:SharpCompress.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\build\\Epi Info 7\\SharpCompress.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_E7F22B0032DF43F3900910E3959CFFED"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2B3B6E4040774E6DA4E0B1AE3A8D8234"
             {
             "AssemblyRegister" = "3:1"
@@ -6258,7 +6187,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MongoDB.Bson, Version=2.19.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:MongoDB.Bson, Version=3.14.1.0, Culture=neutral, PublicKeyToken=94992a530f44e321, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_36FD404A326A27DA9A1C4278DCE563F5"
@@ -6351,7 +6280,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MongoDB.Driver, Version=2.19.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:MongoDB.Driver, Version=3.14.1.0, Culture=neutral, PublicKeyToken=94992a530f44e321, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_3811B4FD6C924B1BB4F4280000598EB0"
@@ -6929,6 +6858,37 @@
             "TargetName" = "8:IOCode.xml"
             "Tag" = "8:"
             "Folder" = "8:_DEE62907F04C498CA73B1B9EEA960923"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4B8E2C7A9D1F4E30A5C6B7D8E9F01A23"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Microsoft.Extensions.Logging.Abstractions, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_4B8E2C7A9D1F4E30A5C6B7D8E9F01A23"
+                    {
+                    "Name" = "8:Microsoft.Extensions.Logging.Abstractions.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\build\\Epi Info 7\\Microsoft.Extensions.Logging.Abstractions.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_E7F22B0032DF43F3900910E3959CFFED"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -7564,6 +7524,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5C9F3D8B0E2A4F41B6D7C8E9F0A12B34"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.Diagnostics.DiagnosticSource, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_5C9F3D8B0E2A4F41B6D7C8E9F0A12B34"
+                    {
+                    "Name" = "8:System.Diagnostics.DiagnosticSource.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\build\\Epi Info 7\\System.Diagnostics.DiagnosticSource.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_E7F22B0032DF43F3900910E3959CFFED"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5D35726C17474758B15657FBA421C474"
             {
             "AssemblyRegister" = "3:1"
@@ -7796,26 +7787,6 @@
             "TargetName" = "8:Lyme.mdb"
             "Tag" = "8:"
             "Folder" = "8:_2BB20A1D15AE4C2996126642E7786B8C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6606331B309A43FEA28A4BD37C7F4875"
-            {
-            "SourcePath" = "8:..\\build\\Epi Info 7\\MongoDB.Driver.Core.xml"
-            "TargetName" = "8:MongoDB.Driver.Core.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_E7F22B0032DF43F3900910E3959CFFED"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -8079,6 +8050,37 @@
                     }
                 }
             "SourcePath" = "8:..\\build\\Epi Info 7\\Epi.Data.MySQL.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_E7F22B0032DF43F3900910E3959CFFED"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6DA04E9C1F3B4052C7E8D9F0A1B23C45"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_6DA04E9C1F3B4052C7E8D9F0A1B23C45"
+                    {
+                    "Name" = "8:Microsoft.Bcl.AsyncInterfaces.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\build\\Epi Info 7\\Microsoft.Bcl.AsyncInterfaces.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E7F22B0032DF43F3900910E3959CFFED"
@@ -8557,6 +8559,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7EB15FAD204C4163D8F9E0A1B2C34D56"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_7EB15FAD204C4163D8F9E0A1B2C34D56"
+                    {
+                    "Name" = "8:System.Runtime.CompilerServices.Unsafe.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\build\\Epi Info 7\\System.Runtime.CompilerServices.Unsafe.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_E7F22B0032DF43F3900910E3959CFFED"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7FD13B58292B48AE829A6B656F423321"
             {
             "SourcePath" = "8:..\\build\\Epi Info 7\\Projects\\KML_Example\\ACS_11_1YR_HealthInsurance.xls"
@@ -8794,7 +8827,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Snappier, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a1b25124e6e13a3a, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Snappier, Version=1.3.1.0, Culture=neutral, PublicKeyToken=a1b25124e6e13a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_84ACA80BB4EB2EBAB338B157EA5D5699"
@@ -9150,37 +9183,6 @@
                     }
                 }
             "SourcePath" = "8:System.Runtime.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_E7F22B0032DF43F3900910E3959CFFED"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_93BE30CFD2A0553B60A6CD7F4B48F893"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MongoDB.Driver.Core, Version=2.19.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_93BE30CFD2A0553B60A6CD7F4B48F893"
-                    {
-                    "Name" = "8:MongoDB.Driver.Core.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:MongoDB.Driver.Core.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E7F22B0032DF43F3900910E3959CFFED"
@@ -10431,37 +10433,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C16EE1EE3F654FD8A60982B2F862304D"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MongoDB.Driver.Core, Version=2.19.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_C16EE1EE3F654FD8A60982B2F862304D"
-                    {
-                    "Name" = "8:MongoDB.Driver.Core.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\build\\Epi Info 7\\MongoDB.Driver.Core.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_E7F22B0032DF43F3900910E3959CFFED"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C1CC6225FCF249F3BDE66780035C8BB3"
             {
             "SourcePath" = "8:..\\build\\Epi Info 7\\Templates\\Fields\\NBS (Landscape Page Layout)\\NBS - Patient Info - Name Info.xml"
@@ -10675,37 +10646,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C89555E2868856DA2D6FEFE8610487E3"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MongoDB.Libmongocrypt, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_C89555E2868856DA2D6FEFE8610487E3"
-                    {
-                    "Name" = "8:MongoDB.Libmongocrypt.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:MongoDB.Libmongocrypt.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_E7F22B0032DF43F3900910E3959CFFED"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C8E1C01C305B4ECFB25F043DC63FFCAB"
             {
             "AssemblyRegister" = "3:1"
@@ -10888,37 +10828,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CCA7FD5E324EA7A620A2D44C20B26E7C"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AWSSDK.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_CCA7FD5E324EA7A620A2D44C20B26E7C"
-                    {
-                    "Name" = "8:AWSSDK.Core.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:AWSSDK.Core.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_E7F22B0032DF43F3900910E3959CFFED"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CDA132F0FCAA40AFABD7934D1C6D5819"
@@ -12375,7 +12284,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ZstdSharp, Version=0.6.7.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:ZstdSharp, Version=0.7.3.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_F7B423D9154194753FA3011C25488FAD"
@@ -12406,7 +12315,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MongoDB.Driver, Version=2.19.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:MongoDB.Driver, Version=3.14.1.0, Culture=neutral, PublicKeyToken=94992a530f44e321, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_F86BD3A9646872AB6C1015300D94217A"
