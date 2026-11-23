@@ -381,5 +381,10 @@
             <Grid x:Name="grdLayerConfigContainer" HorizontalAlignment="Center" VerticalAlignment="Center" />
             <Image x:Name="imgCloseLayer" Source="..\Images\x_over.png" Cursor="Hand" HorizontalAlignment="Right" Margin="2" VerticalAlignment="Top" Stretch="None" />
         </Grid>
+        <TextBlock Grid.Column="1" Panel.ZIndex="999" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                   Margin="0,0,10,8" Background="#CCFFFFFF" Padding="4,2" FontSize="11">
+            <Hyperlink NavigateUri="https://www.openstreetmap.org/copyright"
+                       RequestNavigate="Attribution_RequestNavigate">© OpenStreetMap contributors</Hyperlink>
+        </TextBlock>
     </Grid>
 </UserControl>

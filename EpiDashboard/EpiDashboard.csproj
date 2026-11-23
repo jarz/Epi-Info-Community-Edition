@@ -613,6 +613,7 @@
     <Compile Include="Mapping\IChoroLayerProvider.cs" />
     <Compile Include="Mapping\ListLegendTextDictionary.cs" />
     <Compile Include="Mapping\MapUIHelper.cs" />
+    <Compile Include="Mapping\PolicyCompliantOpenStreetMapLayer.cs" />
     <Compile Include="Mapping\PointLayerProperties.xaml.cs">
       <DependentUpon>PointLayerProperties.xaml</DependentUpon>
     </Compile>

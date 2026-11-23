@@ -324,6 +324,12 @@ namespace EpiDashboard.Mapping
         {
         }
 
+        private void Attribution_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            System.Diagnostics.Process.Start(e.Uri.ToString());
+            e.Handled = true;
+        }
+
         private void RenderMap()
         {
             try
@@ -331,7 +337,7 @@ namespace EpiDashboard.Mapping
                 txtLoading.Visibility = Visibility.Collapsed;
                 waitCursor.Visibility = Visibility.Collapsed;
 
-                OpenStreetMapLayer layer = new OpenStreetMapLayer();
+                PolicyCompliantOpenStreetMapLayer layer = new PolicyCompliantOpenStreetMapLayer();
                 layer.InitializationFailed += new EventHandler<EventArgs>(layer_InitializationFailed);
 
                 bool sparse_connection = false;
