@@ -16,6 +16,7 @@ namespace Epi.Data.MongoDB.Wrappers
         private string userName;
         private string password;
         private string connectionString;
+        private readonly TimeZoneInfo readTimeZone = TimeZoneInfo.Local;
 
         private MongoDBWrapper()
         {
@@ -34,6 +35,12 @@ namespace Epi.Data.MongoDB.Wrappers
             {
                 this.connectionString = connectionString;
             }
+        }
+
+        // Reads stored dates as a machine in readTimeZone would; production code always uses the local time zone.
+        internal MongoDBWrapper(string connectionString, TimeZoneInfo readTimeZone) : this(connectionString)
+        {
+            this.readTimeZone = readTimeZone;
         }
 
         public MongoDBWrapper(string host, string database) : this(host, 27017, database)
@@ -164,7 +171,7 @@ namespace Epi.Data.MongoDB.Wrappers
             return await collection.CountDocumentsAsync(new BsonDocument());
         }
 
-        private DataTable GetDataTableFromBson(DataTable dt, BsonDocument doc)
+        internal DataTable GetDataTableFromBson(DataTable dt, BsonDocument doc)
         {
             AddColumns(dt, doc, "");
 
@@ -196,16 +203,27 @@ namespace Epi.Data.MongoDB.Wrappers
                         else
                         {
                             if (!array[x].IsBsonNull)
-                                dr[prefix + elm.Name + "_" + x] = array[x];
+                                dr[prefix + elm.Name + "_" + x] = ToDataValue(array[x]);
                         }
                     }
                 }
                 else
                 {
                     if (!elm.Value.IsBsonNull)
-                        dr[prefix + elm.Name] = elm.Value;
+                        dr[prefix + elm.Name] = ToDataValue(elm.Value);
                 }
             }
+        }
+
+        // BSON dates are UTC instants. InsertBulkRows stores local wall-clock values converted to UTC, so show them in local time.
+        private object ToDataValue(BsonValue value)
+        {
+            if (value.IsValidDateTime)
+            {
+                return TimeZoneInfo.ConvertTimeFromUtc(value.ToUniversalTime(), readTimeZone);
+            }
+
+            return value;
         }
 
         private void AddColumns(DataTable dt, BsonDocument doc, string prefix)
